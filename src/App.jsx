@@ -1,16 +1,16 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ComingSoon from "./components/routes/ComingSoon";
+import './App.css';
 
 const App = () => {
-  return (
-    <div>
-      <Navbar />
-      <main style={{ padding: "100px", textAlign: "center" }}>
-        <h1>The site is working!</h1>
-      </main>
-      <Footer />
-    </div>
-  );
+   return (
+      <div>
+         <Navbar />
+         <ComingSoon />
+         <Footer />
+      </div>
+   );
 };
 
 export default App;
