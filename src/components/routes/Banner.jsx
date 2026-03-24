@@ -1,14 +1,21 @@
 import React from "react";
 
 const Banner = () => {
-  const categories = ["Lehengas", "Sarees", "Kurta Sets", "Sherwanis"];
+  const categories = [
+    "Lehengas",
+    "Sherwanis",
+    "Sarees",
+    "Kurta Sets",
+    "Nehru Vests",
+    "Gowns",
+    "Accessories",
+  ];
 
-  // Shared Text Component
-  // Fixed size for Laptop: 85px to 110px (doesn't grow forever)
+
   const DecorativeText = ({ colorClass, strokeClass }) => (
-    <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 lg:pb-0 lg:items-end lg:justify-center lg:pr-[6%] xl:pr-[10%] pointer-events-none">
+    <div className="absolute inset-y-0 right-0 w-full lg:w-[45%] flex flex-col items-center justify-end pb-16 lg:pb-0 lg:items-end lg:justify-center lg:pr-[5%] xl:pr-[8%] pointer-events-none">
       <div
-        className={`st-bebas text-[clamp(60px,18vw,120px)] lg:text-[clamp(85px,7vw,110px)] xl:text-[120px] leading-[0.85] text-center lg:text-right ${colorClass}`}
+        className={`st-bebas text-[clamp(50px,15vw,90px)] lg:text-[clamp(70px,6vw,95px)] xl:text-[110px] leading-[0.8] text-center lg:text-right ${colorClass}`}
       >
         <span className={`block text-transparent ${strokeClass}`}>
           TIMELESS
@@ -16,103 +23,116 @@ const Banner = () => {
         STYLE
       </div>
       <div
-        className={`st-josefin mt-3 lg:mt-4 text-[9px] lg:text-[10px] xl:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] uppercase text-center lg:text-right opacity-60 ${colorClass}`}
+        className={`st-josefin mt-2 text-[9px] lg:text-[10px] tracking-[0.5em] uppercase text-center lg:text-right opacity-70 ${colorClass}`}
       >
-        The Signature Collection
+        Couture for Him & Her
       </div>
     </div>
   );
 
-  // The Clip Path:
-  // Laptop: Starts at 52% to give the pink box enough width to hold the text "STYLE"
+  const primaryBrandColor = "text-[#064E3B]";
+  const primaryBgColor = "bg-[#064E3B]";
+  const strokeColor = "[-webkit-text-stroke:1px_rgba(6,78,59,0.15)]";
+
+  
   const clipPathClass =
-    "[clip-path:polygon(0_65%,100%_50%,100%_100%,0%_100%)] lg:[clip-path:polygon(52%_0,100%_0,100%_100%,70%_100%)]";
+    "[clip-path:polygon(0_65%,100%_50%,100%_100%,0%_100%)] lg:[clip-path:polygon(45%_0,100%_0,100%_100%,65%_100%)]";
 
   return (
-    <div className="relative w-full overflow-hidden bg-[#fff9f5] min-h-screen lg:min-h-0 lg:h-[600px] xl:h-[700px] flex flex-col lg:block">
-      {/* ── LAYER 1: BASE TEXT (The 'Flip' Color) ── */}
-      {/* Constrained to the right side on laptop so it stays "in the box" area */}
-      <div className="absolute inset-y-0 right-0 w-full lg:w-[48%] z-0">
+    <div className="relative w-full overflow-hidden bg-[#fafaf9] min-h-screen lg:min-h-0 lg:h-[580px] xl:h-[650px] flex flex-col lg:block">
+      {/* ── LAYER 1: BASE TEXT ── */}
+      <div className="absolute inset-y-0 right-0 w-full lg:w-[55%] z-0">
         <DecorativeText
-          colorClass="text-[#C8185A]"
-          strokeClass="[-webkit-text-stroke:1px_rgba(200,24,90,0.2)]"
+          colorClass={primaryBrandColor}
+          strokeClass={strokeColor}
         />
       </div>
 
-      {/* ── LAYER 2: PINK CONTAINER + WHITE TEXT ── */}
+      {/* ── LAYER 2: GREEN CONTAINER + WHITE TEXT ── */}
       <div
-        className={`absolute inset-0 z-10 pointer-events-none bg-[#C8185A] transition-all duration-700 ${clipPathClass}`}
+        className={`absolute inset-0 z-10 pointer-events-none ${primaryBgColor} transition-all duration-700 ${clipPathClass}`}
       >
+        {/* Fine Texture */}
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(255,255,255,0.1) 18px, rgba(255,255,255,0.1) 19px)",
+              "radial-gradient(circle at 1px 1px, white 0.5px, transparent 0)",
+            backgroundSize: "30px 30px",
           }}
         />
 
-        {/* Constrained White Text */}
-        <div className="absolute inset-y-0 right-0 w-full lg:w-[48%]">
+        <div className="absolute inset-y-0 right-0 w-full lg:w-[55%]">
           <DecorativeText
             colorClass="text-white"
-            strokeClass="[-webkit-text-stroke:1px_rgba(255,255,255,0.4)]"
+            strokeClass="[-webkit-text-stroke:1px_rgba(255,255,255,0.25)]"
           />
         </div>
       </div>
 
-      {/* ── LAYER 3: MAIN CONTENT (Headlines, Buttons) ── */}
-      {/* lg:w-[48%] ensures this container stops before hitting the pink box */}
-      <div className="relative z-30 flex flex-col justify-center px-6 pt-20 pb-10 md:px-12 lg:pt-0 lg:pb-0 lg:absolute lg:inset-y-0 lg:left-0 lg:w-[48%] lg:pl-[8%] xl:pl-[10%]">
-        <div className="st-josefin flex items-center gap-3 text-[10px] lg:text-[11px] tracking-[0.4em] uppercase text-[#C8185A] mb-5">
-          <span className="inline-block w-[25px] lg:w-[35px] h-[1px] bg-[#C8185A]" />
-          Curated Essentials
+      {/* ── LAYER 3: MAIN CONTENT ── */}
+      <div className="relative z-30 flex flex-col justify-center px-6 pt-20 pb-10 md:px-12 lg:pt-0 lg:pb-0 lg:absolute lg:inset-y-0 lg:left-0 lg:w-[42%] lg:pl-[8%] xl:pl-[10%]">
+        <div className="st-josefin flex items-center gap-3 text-[10px] lg:text-[11px] tracking-[0.4em] uppercase text-[#064E3B] mb-5 font-semibold">
+          <span className="inline-block w-[20px] lg:w-[30px] h-[1.5px] bg-[#064E3B]" />
+          New Arrivals
         </div>
 
-        <h2 className="st-playfair text-[clamp(34px,8vw,60px)] lg:text-[clamp(45px,4.5vw,70px)] font-bold text-[#1a1a1a] leading-[1.1] max-w-[15ch]">
-          Where Tradition
-          <br />
-          Meets{" "}
-          <em className="text-[#C8185A] not-italic italic font-medium">
-            Today
+        <h2 className="st-playfair text-[clamp(30px,7vw,48px)] lg:text-[clamp(38px,3.8vw,58px)] font-bold text-[#1a1a1a] leading-[1.2] max-w-[15ch]">
+          Modern Tradition <br />
+          <em className="text-[#064E3B] not-italic italic font-medium underline decoration-emerald-200/50 underline-offset-[8px]">
+            For Men & Women
           </em>
         </h2>
 
-        <p className="st-josefin mt-6 max-w-[340px] lg:max-w-[400px] text-[14px] lg:text-[15px] text-gray-600 leading-relaxed font-light">
-          Handpicked sarees, kurta sets & fusion wear — designed for the modern
-          Indian silhouette.
+        <p className="st-josefin mt-6 max-w-[340px] lg:max-w-[380px] text-[14px] lg:text-[15px] text-gray-600 leading-relaxed font-light">
+          Bespoke silhouettes crafted for celebrations. Discover heritage
+          designs reimagined.
         </p>
 
-        <div className="flex flex-wrap gap-2 mt-8 lg:mt-10">
+        {/* Categories */}
+        <div className="flex flex-wrap gap-2 mt-8 max-w-[450px]">
           {categories.map((cat) => (
             <span
               key={cat}
-              className="st-josefin border border-gray-300 px-4 py-2 lg:px-5 lg:py-2.5 text-[9px] lg:text-[10px] tracking-widest uppercase text-[#444] bg-white/60 backdrop-blur-sm lg:bg-transparent transition-all duration-300 hover:border-[#C8185A] hover:text-[#C8185A] cursor-pointer"
+              className="st-josefin border border-gray-200 px-3 py-1.5 lg:px-4 lg:py-2 text-[9px] lg:text-[10px] tracking-widest uppercase text-[#444] bg-white transition-all duration-300 hover:border-[#064E3B] hover:text-[#064E3B] hover:shadow-sm cursor-pointer"
             >
               {cat}
             </span>
           ))}
         </div>
 
-        <div className="mt-10 lg:mt-12">
-          <a
-            href="#"
-            className="st-josefin group inline-flex items-center bg-[#C8185A] text-white text-[10px] lg:text-[11px] tracking-[0.3em] px-10 py-4 lg:px-12 lg:py-4 uppercase transition-all duration-300 hover:bg-[#a11248] hover:shadow-xl active:scale-95"
-          >
-            Explore All
-            <span className="ml-3 transition-transform duration-300 group-hover:translate-x-2">
-              →
-            </span>
-          </a>
+        {/* UI VERSE BUTTON */}
+        <div className="mt-10">
+          <div className="relative group w-fit">
+            <button className="relative inline-block p-px font-semibold leading-6 text-white bg-neutral-900 shadow-2xl cursor-pointer rounded-2xl transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 shadow-emerald-950/40 hover:shadow-emerald-600/30">
+              <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-cyan-500 to-sky-600 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+              <span className="relative z-10 block px-7 py-3.5 rounded-2xl bg-neutral-950">
+                <div className="relative z-10 flex items-center space-x-3">
+                  <span className="st-josefin text-[11px] tracking-[0.2em] uppercase transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300">
+                    Begin Journey
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5 transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300"
+                  >
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path>
+                  </svg>
+                </div>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Brand Label */}
-      <span className="hidden lg:block st-josefin absolute top-10 right-10 text-[10px] tracking-[0.5em] uppercase text-white/30 z-40">
-        Shubham Threads
+      <span className="hidden lg:block st-josefin absolute top-8 right-10 text-[9px] tracking-[0.6em] uppercase text-white/30 z-40">
+        Shubham Threads • 2024
       </span>
 
       {/* Spacer for Mobile View */}
-      <div className="h-[350px] md:h-[400px] lg:hidden" />
+      <div className="h-[320px] md:h-[380px] lg:hidden" />
     </div>
   );
 };
