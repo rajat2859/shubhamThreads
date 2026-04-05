@@ -1,155 +1,209 @@
 import React from "react";
-import NavLogo from "../../assets/nav-logo.png";
 
-const Footer = () => {
+// Reusable SVG Icons
+const BrandIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="mt-1"
+  >
+    <rect
+      x="4"
+      y="14"
+      width="8"
+      height="4"
+      rx="1"
+      transform="rotate(-45 4 14)"
+      fill="#111827"
+    />
+    <rect
+      x="10"
+      y="20"
+      width="16"
+      height="4"
+      rx="1"
+      transform="rotate(-45 10 20)"
+      fill="#111827"
+    />
+  </svg>
+);
+
+const FacebookIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 16.84 5.44 20.87 10 21.8V15H8V12H10V9.5C10 7.57 11.57 6 13.5 6H16V9H14C13.45 9 13 9.45 13 10V12H16L15.5 15H13V21.95C18.05 21.45 22 17.19 22 12Z" />
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14 9.94 13.4 10.63 13 11.2V10.1H10.5V18.5H13V13.8C13 13.3 13.3 12.3 14.5 12.3C15.6 12.3 15.8 13.3 15.8 13.8V18.5H18.5M6.9 8.6C7.7 8.6 8.3 7.9 8.3 7.1C8.3 6.3 7.7 5.6 6.9 5.6C6.1 5.6 5.5 6.3 5.5 7.1C5.5 7.9 6.1 8.6 6.9 8.6M5.6 18.5H8.2V10.1H5.6V18.5Z" />
+  </svg>
+);
+
+const TwitterIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16.02 6.02 17.26 7.89 17.3C6.43 18.45 4.58 19.13 2.56 19.13C2.22 19.13 1.88 19.11 1.54 19.07C3.44 20.29 5.7 21 8.12 21C16.01 21 20.33 14.46 20.33 8.79C20.33 8.6 20.33 8.42 20.32 8.23C21.16 7.63 21.88 6.87 22.46 6Z" />
+  </svg>
+);
+
+export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] text-white pt-24 pb-12 px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Top Section: Newsletter focus */}
-        <div className="flex flex-col md:flex-row justify-between items-start border-b border-white/10 pb-20 mb-16 gap-12">
-          <div className="max-w-md">
-            <h3 className="font-serif text-3xl mb-4 italic tracking-wide">
-              The Atelier Newsletter
-            </h3>
-            <p className="text-gray-400 font-light text-sm tracking-widest leading-loose">
-              Join our inner circle for exclusive updates on new collections,
-              bespoke services, and seasonal stories.
-            </p>
+    <footer className="w-full bg-[#fafafa] py-20 px-6 font-sans">
+      <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-8 justify-between">
+        {/* Left Column: Brand & Description */}
+        <div className="w-full lg:w-[35%] flex flex-col gap-6">
+          <div className="flex items-center gap-2">
+            <BrandIcon />
+            <span className="text-3xl font-bold tracking-tight text-gray-900">
+              Brand
+            </span>
           </div>
-          <div className="w-full md:w-96">
-            <div className="relative group border-b border-gray-600 focus-within:border-white transition-all">
-              <input
-                type="email"
-                placeholder="YOUR EMAIL ADDRESS"
-                className="bg-transparent border-none outline-none py-4 w-full text-[10px] tracking-[0.3em] font-medium uppercase text-white placeholder-gray-500"
-              />
-              <button className="absolute right-0 top-1/2 -translate-y-1/2 text-[10px] tracking-[0.2em] font-bold hover:text-gray-300 transition-colors uppercase">
-                Subscribe
-              </button>
-            </div>
-          </div>
+          <p className="text-gray-500 text-[17px] leading-relaxed max-w-sm mt-2">
+            Stay connected with us on social media for the latest trends,
+            exclusive offers, and style inspiration.
+          </p>
         </div>
 
-        {/* Middle Section: Grid Navigation */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6">
-          {/* Brand Info */}
-          <div className="col-span-2 md:col-span-1">
-            <img
-              src={NavLogo}
-              alt="Logo"
-              className="h-14 mb-8 brightness-0 invert"
-            />
-            {/* Note: brightness-0 invert makes your logo white for the dark background */}
-            <p className="text-[12px] leading-7 text-gray-400 font-light max-w-[200px]">
-              Elegance in every stitch. Shubham Threads creates bespoke menswear
-              for the modern gentleman.
-            </p>
-          </div>
-
+        {/* Right Area: Links Grid */}
+        <div className="w-full lg:w-[60%] grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
           {/* Column 1 */}
-          <div className="flex flex-col space-y-4">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 text-gray-500 underline underline-offset-8 decoration-white/20">
-              The Collections
-            </h4>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition italic hover:translate-x-1 duration-300"
-            >
-              New Arrivals
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition italic hover:translate-x-1 duration-300"
-            >
-              Ready to Wear
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition italic hover:translate-x-1 duration-300"
-            >
-              Accessories
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition italic hover:translate-x-1 duration-300"
-            >
-              Archive
-            </a>
+          <div className="flex flex-col gap-6">
+            <h4 className="font-semibold text-gray-900 text-[15px]">Shoes</h4>
+            <ul className="flex flex-col gap-4 text-[15px] text-gray-400">
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  T-Shirt
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Jackets
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Hat
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Accessories
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Column 2 */}
-          <div className="flex flex-col space-y-4">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 text-gray-500 underline underline-offset-8 decoration-white/20">
-              Client Services
+          <div className="flex flex-col gap-6">
+            <h4 className="font-semibold text-gray-900 text-[15px]">
+              All Category
             </h4>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition hover:translate-x-1 duration-300"
-            >
-              Book an Appointment
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition hover:translate-x-1 duration-300"
-            >
-              Sizing & Repairs
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition hover:translate-x-1 duration-300"
-            >
-              Shipping Policy
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition hover:translate-x-1 duration-300"
-            >
-              FAQ
-            </a>
+            <ul className="flex flex-col gap-4 text-[15px] text-gray-400">
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Gift Cards
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Special Events
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Testimonial
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Blog
+                </a>
+              </li>
+            </ul>
           </div>
 
-          {/* Column 3 - Contact/Social */}
-          <div className="flex flex-col space-y-4">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 text-gray-500 underline underline-offset-8 decoration-white/20">
-              Social
+          {/* Column 3 */}
+          <div className="flex flex-col gap-6">
+            <h4 className="font-semibold text-gray-900 text-[15px]">
+              Tracking Package
             </h4>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition flex items-center gap-2"
-            >
-              INSTAGRAM <span className="text-[8px] text-gray-600">↗</span>
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition flex items-center gap-2"
-            >
-              PINTEREST <span className="text-[8px] text-gray-600">↗</span>
-            </a>
-            <a
-              href="#"
-              className="text-[12px] font-light tracking-widest text-gray-300 hover:text-white transition flex items-center gap-2"
-            >
-              THREADS <span className="text-[8px] text-gray-600">↗</span>
-            </a>
+            <ul className="flex flex-col gap-4 text-[15px] text-gray-400">
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  Terms and Conditions
+                </a>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        {/* Bottom Section */}
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] tracking-[0.3em] font-light text-gray-500 gap-6 uppercase">
-          <p>© 2024 Shubham Threads. Developed with Care.</p>
-          <div className="flex space-x-10">
-            <a href="#" className="hover:text-white transition">
-              Terms of Service
-            </a>
-            <a href="#" className="hover:text-white transition">
-              Cookies
-            </a>
+          {/* Column 4: Contact & Socials */}
+          <div className="flex flex-col gap-6">
+            <h4 className="font-semibold text-gray-900 text-[15px]">Contact</h4>
+            <ul className="flex flex-col gap-4 text-[15px] text-gray-400">
+              <li className="text-gray-500">+8801867204649</li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900 transition-colors">
+                  About Us
+                </a>
+              </li>
+            </ul>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-5 text-gray-400 mt-2">
+              <a href="#" className="hover:text-gray-900 transition-colors">
+                <FacebookIcon />
+              </a>
+              <a href="#" className="hover:text-gray-900 transition-colors">
+                <LinkedInIcon />
+              </a>
+              <a href="#" className="hover:text-gray-900 transition-colors">
+                <TwitterIcon />
+              </a>
+            </div>
           </div>
-          <p>MUMBAI / LONDON / PARIS</p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
